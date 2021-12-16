@@ -33,13 +33,13 @@
         <td>an array of JSON objects, each represents a movie
           <pre>
             <code>
-              [
-              {
-                "title": "MovieTitle",
-                "desciption": "a description of the movie"
-                ...
-              }
-              ]
+[
+{
+  "title": "MovieTitle",
+  "desciption": "a description of the movie"
+  ...
+}
+]
             </code>
           </pre>
         </td>
@@ -52,17 +52,15 @@
         <td>a JSON object holding data about a single movie, containing a title, description, genre, director, image URL &amp; featured status
           <pre>
             <code>
-              [
-              {
-                "title": "MovieTitle",
-                "desciption": "a description of the movie",
-                "genre": {...},
-                "director":  {...},
-                "imageURL": "url....",
-                "featured": true
+{
+  "title": "MovieTitle",
+  "desciption": "a description of the movie",
+  "genre": {...},
+  "director":  {...},
+  "imageURL": "url....",
+  "featured": true
 
-              }
-              ]
+}
             </code>
           </pre>
         </td>
@@ -75,7 +73,7 @@
         <td>returns a genre description as text
           <pre>
             <code>
-              genre description
+genre description
             </code>
           </pre>
         </td>
@@ -88,11 +86,11 @@
         <td>a JSON object holding data about a single director containing a name, biography, birth year, death year
           <pre>
             <code>
-              {
-                "bio": "Biography",
-                "birthyear": "1950",
-                "deathyear": "2000",
-              }
+{
+  "bio": "Biography",
+  "birthyear": "1950",
+  "deathyear": "2000",
+}
             </code>
           </pre>
         </td>
@@ -104,27 +102,27 @@
         <td>a JSON object holding data about a user being added containing a username, email and password
           <pre>
             <code>
-              {
-                "username": "user1",
-                "password": "password1",
-                "email": "email@gmail.com",
-                "birthday": "01/01/2001"
+{
+  "username": "user1",
+  "password": "password1",
+  "email": "email@gmail.com",
+  "birthday": "01/01/2001"
 
-              }
+}
             </code>
           </pre>
         </td>
         <td>a JSON object holding data about a user being added containing a username, email,password and birthday. The object will also contain an auto gnereated ID for this user.
           <pre>
             <code>
-              {
-                "id": 1,
-                "username": "user1",
-                "password": "password1",
-                "email": "email@gmail.com",
-                "birthday": "01/01/2001"
+{
+  "id": 1,
+  "username": "user1",
+  "password": "password1",
+  "email": "email@gmail.com",
+  "birthday": "01/01/2001"
 
-              }
+}
             </code>
           </pre>
         </td>
@@ -133,7 +131,19 @@
         <td>Allow users to update their user info (username)</td>
         <td>/users/[username]</td>
         <td>PUT</td>
-        <td>None</td>
+        <td>a JSON object containing the new data to replace the user's old data
+          <pre>
+          <code>
+{
+  "id": 1,
+  "username": "user1",
+  "password": "password1",
+  "email": "new_email@gmail.com",
+  "birthday": "01/01/2001"
+
+}
+          </code>
+        </pre></td>
         <td>a text message indicating the username has been changed.</td>
       </tr>
       <tr>
@@ -147,20 +157,7 @@
         <td>Allow users to remove a movie from their list of favourites</td>
         <td>/users/[username]/removefavourite/[movietitle]</td>
         <td>DELETE</td>
-        <td>a JSON object containing the new data to replace the user's old data
-          <pre>
-            <code>
-              {
-                "id": 1,
-                "username": "user1",
-                "password": "password1",
-                "email": "new_email@gmail.com",
-                "birthday": "01/01/2001"
-
-              }
-            </code>
-          </pre>
-        </td>
+        <td>None</td>
         <td>a text message indicating a movie has been removed from favourites</td>
       </tr>
       <tr>
