@@ -39,12 +39,12 @@ app.get('/directors/:name', (req, res) => {
 });
 
 // POST request for user registration
-app.post('/users/add/:username', (req, res) => {
+app.post('/users/:username', (req, res) => {
     res.send('Registration successful!');
 });
 
 // PUT request for updating user details
-app.put('/users/update/:username', (req, res) => {
+app.put('/users/:username', (req, res) => {
     res.send('User details updated!');
 });
 
@@ -59,7 +59,7 @@ app.delete('/users/:username/removefavourite/:movietitle', (req, res) => {
 });
 
 // DELETE request removing a user
-app.delete('/users/remove/:username', (req, res) => {
+app.delete('/users/:username', (req, res) => {
     res.send('You have succesfully deregistered.');
 });
 

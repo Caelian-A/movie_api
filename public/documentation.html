@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <title>Documentation for Movie API</title>
 </head>
 <body>
@@ -29,39 +30,108 @@ This is the skeleton for my Movie API, which will have the following features
         <td>/movies</td>
         <td>GET</td>
         <td>None</td>
-        <td>a JSON object holding a list movie titles</td>
+        <td>an array of JSON objects, each represents a movie
+          <pre>
+            <code>
+[
+  {
+    "title": "MovieTitle",
+    "desciption": "a description of the movie"
+    ...
+  }
+]
+            </code>
+          </pre>
+        </td>
       </tr>
       <tr>
         <td>Return Data&nbsp;&nbsp;about a single movie by title to the user</td>
         <td>/movies/[title]</td>
         <td>GET</td>
         <td>None</td>
-        <td>a JSON object holding data about a single movie, containing a title, description, genre, director, image URL &amp; featured status</td>
+        <td>a JSON object holding data about a single movie, containing a title, description, genre, director, image URL &amp; featured status
+          <pre>
+            <code>
+              [
+              {
+                "title": "MovieTitle",
+                "desciption": "a description of the movie",
+                "genre": {...}, 
+                "director":  {...},
+                "imageURL": "url....", 
+                "featured": true
+
+              }
+            ]
+            </code>
+          </pre>
+        </td>
       </tr>
       <tr>
         <td>Return data about a genre (description) by name / title e.g., "Thriller"</td>
         <td>/genres/[GenreName]</td>
         <td>GET</td>
         <td>None</td>
-        <td>a JSON object holding a genre description</td>
+        <td>returns a genre description as text
+          <pre>
+            <code>
+genre description
+            </code>
+          </pre>
+        </td>
       </tr>
       <tr>
         <td>Return data about a director (bio, birth year, death year) by name</td>
         <td>/directors/[name]</td>
         <td>GET</td>
         <td>None</td>
-        <td>a JSON object holding data about a single director containing a name, biography, birth year, death year</td>
+        <td>a JSON object holding data about a single director containing a name, biography, birth year, death year
+          <pre>
+            <code>
+              {
+                "bio": "Biography",
+                "birthyear": "1950",
+                "deathyear": "2000", 
+              }
+            </code>
+          </pre>
+        </td>
       </tr>
       <tr>
         <td>Allow new users to register</td>
-        <td>/users/add/[username]</td>
+        <td>/users/[username]</td>
         <td>POST</td>
-        <td>a JSON object holding data about a user being added containing a username, email and password</td>
-        <td>a JSON object holding data about a user being added containing a username, email and password </td>
+        <td>a JSON object holding data about a user being added containing a username, email and password
+          <pre>
+            <code>
+              {
+                "username": "user1",
+                "password": "password1", 
+                "email": "email@gmail.com",
+                "birthday": "01/01/2001"
+
+              }
+            </code>
+          </pre>
+        </td>
+        <td>a JSON object holding data about a user being added containing a username, email,password and birthday. The object will also contain an auto gnereated ID for this user.
+          <pre>
+            <code>
+              {
+                "id": 1,
+                "username": "user1",
+                "password": "password1", 
+                "email": "email@gmail.com",
+                "birthday": "01/01/2001"
+
+              }
+            </code>
+          </pre>
+        </td>
       </tr>
       <tr>
         <td>Allow users to update their user info (username)</td>
-        <td>/users/update/[username]</td>
+        <td>/users/[username]</td>
         <td>PUT</td>
         <td>None</td>
         <td>a text message indicating the username has been changed.</td>
@@ -75,14 +145,27 @@ This is the skeleton for my Movie API, which will have the following features
       </tr>
       <tr>
         <td>Allow users to remove a movie from their list of favourites</td>
-        <td>/users/removefavourite</td>
+        <td>/users/[username]/removefavourite/[movietitle]</td>
         <td>DELETE</td>
-        <td>None</td>
+        <td>a JSON object containing the new data to replace the user's old data
+          <pre>
+            <code>
+              {
+                "id": 1,
+                "username": "user1",
+                "password": "password1", 
+                "email": "new_email@gmail.com",
+                "birthday": "01/01/2001"
+
+              }
+            </code>
+          </pre>
+        </td>
         <td>a text message indicating a movie has been removed from favourites</td>
       </tr>
       <tr>
         <td>Allow exiting users to deregister </td>
-        <td>/users/remove/[username]</td>
+        <td>/users/:username</td>
         <td>DELETE</td>
         <td>None</td>
         <td>a text message showing a user has deregistered</td>

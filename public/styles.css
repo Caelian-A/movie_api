@@ -1,0 +1,14 @@
+table, td, th {
+    border: 1px solid black;
+}
+
+td, th {
+    padding: 10px;
+}
+
+pre {
+    display: block;
+    background-color: #ccc ;
+    font-size: 12px;
+    padding: 10px;
+}
