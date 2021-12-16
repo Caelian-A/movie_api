@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Documentation for Movie API</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Documentation for Movie API</title>
 </head>
 <body>
-    <h1>Movie API</h1>
-This is the skeleton for my Movie API, which will have the following features
-<ul>
-<li>Contain information about movies, directors and genres</li>
-<li>Allow users to create a profile in order to favourite movies</li>
-</ul>
-<table>
+  <h1>Movie API</h1>
+  This is the skeleton for my Movie API, which will have the following features
+  <ul>
+    <li>Contain information about movies, directors and genres</li>
+    <li>Allow users to create a profile in order to favourite movies</li>
+  </ul>
+  <table>
     <thead>
       <tr>
         <th>REQUEST</th>
@@ -33,13 +33,13 @@ This is the skeleton for my Movie API, which will have the following features
         <td>an array of JSON objects, each represents a movie
           <pre>
             <code>
-[
-  {
-    "title": "MovieTitle",
-    "desciption": "a description of the movie"
-    ...
-  }
-]
+              [
+              {
+                "title": "MovieTitle",
+                "desciption": "a description of the movie"
+                ...
+              }
+              ]
             </code>
           </pre>
         </td>
@@ -56,13 +56,13 @@ This is the skeleton for my Movie API, which will have the following features
               {
                 "title": "MovieTitle",
                 "desciption": "a description of the movie",
-                "genre": {...}, 
+                "genre": {...},
                 "director":  {...},
-                "imageURL": "url....", 
+                "imageURL": "url....",
                 "featured": true
 
               }
-            ]
+              ]
             </code>
           </pre>
         </td>
@@ -75,7 +75,7 @@ This is the skeleton for my Movie API, which will have the following features
         <td>returns a genre description as text
           <pre>
             <code>
-genre description
+              genre description
             </code>
           </pre>
         </td>
@@ -91,7 +91,7 @@ genre description
               {
                 "bio": "Biography",
                 "birthyear": "1950",
-                "deathyear": "2000", 
+                "deathyear": "2000",
               }
             </code>
           </pre>
@@ -106,7 +106,7 @@ genre description
             <code>
               {
                 "username": "user1",
-                "password": "password1", 
+                "password": "password1",
                 "email": "email@gmail.com",
                 "birthday": "01/01/2001"
 
@@ -120,7 +120,7 @@ genre description
               {
                 "id": 1,
                 "username": "user1",
-                "password": "password1", 
+                "password": "password1",
                 "email": "email@gmail.com",
                 "birthday": "01/01/2001"
 
@@ -153,7 +153,7 @@ genre description
               {
                 "id": 1,
                 "username": "user1",
-                "password": "password1", 
+                "password": "password1",
                 "email": "new_email@gmail.com",
                 "birthday": "01/01/2001"
 
@@ -171,6 +171,6 @@ genre description
         <td>a text message showing a user has deregistered</td>
       </tr>
     </tbody>
-    </table>
+  </table>
 </body>
 </html>
