@@ -17,14 +17,14 @@ let movieSchema = mongoose.Schema({
 let userSchema = mongoose.Schema({
 Username: {type: String, required: true},
 Password: {type: String, required: true},
-email: {type: String, required: true},
-birth: Date,
+Email: {type: String, required: true},
+Birth: Date,
 City: String,
-FavouriteMovies: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Movie'}]
+FavouriteMovies: [{ type: mongoose.Schema.Types.ObjectId, ref: 'movie'}]
 });
 
-let Movie = mongoose.model('Movie', movieSchema);
-let User = mongoose.model('User', userSchema);
+let movie = mongoose.model('movie', movieSchema);
+let user = mongoose.model('user', userSchema);
 
-module.exports.Movie = Movie;
-module.exports.User = User;
+module.exports.movie = movie;
+module.exports.user = user;

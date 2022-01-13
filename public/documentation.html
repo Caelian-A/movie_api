@@ -35,9 +35,25 @@
             <code>
 [
 {
-  "title": "MovieTitle",
-  "desciption": "a description of the movie"
-  ...
+  "Genre": {
+      "Name": "Action",
+      "Description": "Movies in the action genre are fast-paced and include a lot of action like fight scenes, chase scenes, and slow-motion shots. They can feature superheroes, martial arts, or exciting stunts. These high-octane films are more about the execution of the plot rather than the plot itself. Action movies are meant to be thrilling to watch and leave audience members on the edge of their seats. Cop movies, disaster films, and some spy films all fall under the action category. "
+  },
+  "_id": "61d6c87bd5d5f02b810002a7",
+  "Title": "Seven Samurai",
+  "Description": "A poor village under attack by bandits recruits seven unemplyed Samurai to help them defend themselves.",
+  "Directors": [
+      {
+          "_id": "61e00eb0980256e6bf22a97e",
+          "Name": "Akira Kurosama",
+          "Bio": "Filmmaker Akira Kurosama began his career as an assistant director in the years leading up to world war 2. In 1950, he gained international acclaim for the samurai tale Rashomon, which he followed with such influential films at Seven Samurai, Throne of Blood and Yojimbo. After a difficult period during which he failed to find backing for his projects and also attempted suicide, his influence on a younger generation of directors led to the ressurection of his career with the films Kagemusha and Ran. Kurosawa died in 1998, leaving behind an impressive body of work that earned him a place as one of the greatest filmmakers of the 20th Century.",
+          "Birth": "1910-03-23T00:00:00.000Z",
+          "Death": "1998-09-06T00:00:00.000Z"
+      }
+  ],
+  "ImageURL": "sevensamurai.png",
+  "Featured": false,
+  "Rating": 
 }
 ]
             </code>
@@ -52,17 +68,29 @@
         <td>a JSON object holding data about a single movie, containing a title, description, genre, director, image URL &amp; featured status
           <pre>
             <code>
-{
-  "title": "MovieTitle",
-  "desciption": "a description of the movie",
-  "genre": {...},
-  "directors":  {...},
-  "imageURL": "url....",
-  "featured": true,
-  "Rating": "x.x",
-  "ReleaseDate": "YYYY-MM-DD"
-
-}
+              [
+              {
+                "Genre": {
+                    "Name": "Action",
+                    "Description": "Movies in the action genre are fast-paced and include a lot of action like fight scenes, chase scenes, and slow-motion shots. They can feature superheroes, martial arts, or exciting stunts. These high-octane films are more about the execution of the plot rather than the plot itself. Action movies are meant to be thrilling to watch and leave audience members on the edge of their seats. Cop movies, disaster films, and some spy films all fall under the action category. "
+                },
+                "_id": "61d6c87bd5d5f02b810002a7",
+                "Title": "Seven Samurai",
+                "Description": "A poor village under attack by bandits recruits seven unemplyed Samurai to help them defend themselves.",
+                "Directors": [
+                    {
+                        "_id": "61e00eb0980256e6bf22a97e",
+                        "Name": "Akira Kurosama",
+                        "Bio": "Filmmaker Akira Kurosama began his career as an assistant director in the years leading up to world war 2. In 1950, he gained international acclaim for the samurai tale Rashomon, which he followed with such influential films at Seven Samurai, Throne of Blood and Yojimbo. After a difficult period during which he failed to find backing for his projects and also attempted suicide, his influence on a younger generation of directors led to the ressurection of his career with the films Kagemusha and Ran. Kurosawa died in 1998, leaving behind an impressive body of work that earned him a place as one of the greatest filmmakers of the 20th Century.",
+                        "Birth": "1910-03-23T00:00:00.000Z",
+                        "Death": "1998-09-06T00:00:00.000Z"
+                    }
+                ],
+                "ImageURL": "sevensamurai.png",
+                "Featured": false,
+                "Rating": 
+              }
+              ]
             </code>
           </pre>
         </td>
