@@ -37,7 +37,7 @@
 {
   "Genre": {
       "Name": "Action",
-      "Description": "Movies in the action genre are fast-paced and include a lot of action like fight scenes, chase scenes, and slow-motion shots. They can feature superheroes, martial arts, or exciting stunts. These high-octane films are more about the execution of the plot rather than the plot itself. Action movies are meant to be thrilling to watch and leave audience members on the edge of their seats. Cop movies, disaster films, and some spy films all fall under the action category. "
+      "Description": "Movies in the action genre are fast-paced ... "
   },
   "_id": "61d6c87bd5d5f02b810002a7",
   "Title": "Seven Samurai",
@@ -46,7 +46,7 @@
       {
           "_id": "61e00eb0980256e6bf22a97e",
           "Name": "Akira Kurosama",
-          "Bio": "Filmmaker Akira Kurosama began his career as an assistant director in the years leading up to world war 2. In 1950, he gained international acclaim for the samurai tale Rashomon, which he followed with such influential films at Seven Samurai, Throne of Blood and Yojimbo. After a difficult period during which he failed to find backing for his projects and also attempted suicide, his influence on a younger generation of directors led to the ressurection of his career with the films Kagemusha and Ran. Kurosawa died in 1998, leaving behind an impressive body of work that earned him a place as one of the greatest filmmakers of the 20th Century.",
+          "Bio": "Filmmaker Akira Kurosama began his career as an assistant director ...",
           "Birth": "1910-03-23T00:00:00.000Z",
           "Death": "1998-09-06T00:00:00.000Z"
       }
@@ -68,29 +68,27 @@
         <td>a JSON object holding data about a single movie, containing a title, description, genre, director, image URL &amp; featured status
           <pre>
             <code>
-              [
-              {
-                "Genre": {
-                    "Name": "Action",
-                    "Description": "Movies in the action genre are fast-paced and include a lot of action like fight scenes, chase scenes, and slow-motion shots. They can feature superheroes, martial arts, or exciting stunts. These high-octane films are more about the execution of the plot rather than the plot itself. Action movies are meant to be thrilling to watch and leave audience members on the edge of their seats. Cop movies, disaster films, and some spy films all fall under the action category. "
-                },
-                "_id": "61d6c87bd5d5f02b810002a7",
-                "Title": "Seven Samurai",
-                "Description": "A poor village under attack by bandits recruits seven unemplyed Samurai to help them defend themselves.",
-                "Directors": [
-                    {
-                        "_id": "61e00eb0980256e6bf22a97e",
-                        "Name": "Akira Kurosama",
-                        "Bio": "Filmmaker Akira Kurosama began his career as an assistant director in the years leading up to world war 2. In 1950, he gained international acclaim for the samurai tale Rashomon, which he followed with such influential films at Seven Samurai, Throne of Blood and Yojimbo. After a difficult period during which he failed to find backing for his projects and also attempted suicide, his influence on a younger generation of directors led to the ressurection of his career with the films Kagemusha and Ran. Kurosawa died in 1998, leaving behind an impressive body of work that earned him a place as one of the greatest filmmakers of the 20th Century.",
-                        "Birth": "1910-03-23T00:00:00.000Z",
-                        "Death": "1998-09-06T00:00:00.000Z"
-                    }
-                ],
-                "ImageURL": "sevensamurai.png",
-                "Featured": false,
-                "Rating": 
-              }
-              ]
+{
+  "Genre": {
+      "Name": "Action",
+      "Description": "Movies in the action genre are fast-paced and include a lot of action... "
+  },
+  "_id": "61d6c87bd5d5f02b810002a7",
+  "Title": "Seven Samurai",
+  "Description": "A poor village under attack by bandits recruits seven unemplyed Samurai to help them defend themselves.",
+  "Directors": [
+      {
+          "_id": "61e00eb0980256e6bf22a97e",
+          "Name": "Akira Kurosama",
+          "Bio": "Filmmaker Akira Kurosama began his career as an assistant director in the years...",
+          "Birth": "1910-03-23T00:00:00.000Z",
+          "Death": "1998-09-06T00:00:00.000Z"
+      }
+  ],
+  "ImageURL": "sevensamurai.png",
+  "Featured": false,
+  "Rating": 
+}
             </code>
           </pre>
         </td>
@@ -103,7 +101,10 @@
         <td>returns a genre description as text
           <pre>
             <code>
-genre description
+{
+  "Name": "Drama",
+  "Description": "The drama genre features stories with high stakes and a lot of conflicts..."
+}
             </code>
           </pre>
         </td>
@@ -117,9 +118,10 @@ genre description
           <pre>
             <code>
 {
-  "Bio": "Biography",
-  "Birth": "YYYY-MM-DD",
-  "Death": "YYYY-MM-DD",
+  "_id": "61e02317348f9fc4d965c764",
+  "Name": "Lilly Wachowski",
+  "Bio": "Bio Here",
+  "Birth": "1967-12-29T00:00:00.000Z"
 }
             </code>
           </pre>
@@ -127,18 +129,17 @@ genre description
       </tr>
       <tr>
         <td>Allow new users to register</td>
-        <td>/users/[username]</td>
+        <td>/users/</td>
         <td>POST</td>
         <td>a JSON object holding data about a user being added containing a username, email and password
           <pre>
             <code>
 {
-  "username": "user1",
-  "password": "password1",
-  "email": "email@gmail.com",
-  "birthday": "YYYY-MM-DD"
-  "City": "London"
-
+  "Username" : "John",
+  "Password" : "John123",
+  "Email" : "John@protonmail.com",
+  "Birthday" : "1980/06/15",
+  "City" : "Sydney"
 }
             </code>
           </pre>
@@ -147,13 +148,14 @@ genre description
           <pre>
             <code>
 {
-  "id": 1,
-  "username": "user1",
-  "password": "password1",
-  "email": "email@gmail.com",
-  "birthday": "YYYY-MM-DD"
-  "City": "London"
-
+  "Username": "John",
+  "Password": "John123",
+  "Email": "John@protonmail.com",
+  "Birth": "1980-06-14T23:00:00.000Z",
+  "City": "Sydney",
+  "FavouriteMovies": [],
+  "_id": "61e02381348f9fc4d965c767",
+  "__v": 0
 }
             </code>
           </pre>
@@ -163,35 +165,81 @@ genre description
         <td>Allow users to update their user info (username)</td>
         <td>/users/[username]</td>
         <td>PUT</td>
-        <td>a JSON object containing the new data to replace the user's old data
+        <td>a JSON object holding the new data to replace the user's old data
           <pre>
           <code>
 {
-  "id": 1,
-  "username": "user1",
-  "password": "password1",
-  "email": "email@gmail.com",
-  "birthday": "YYYY-MM-DD"
-  "City": "London"
-
+  "Username" : "John",
+  "Password" : "John123",
+  "Email" : "John@protonmail.com",
+  "Birthday" : "1980/06/15",
+  "City" : "Sydney"
 }
           </code>
         </pre></td>
-        <td>a text message indicating the username has been changed.</td>
+        <td>a JSON object containing the new data replacing the user's old data
+          <pre>
+          <code>
+{
+  "_id": "61e02381348f9fc4d965c767",
+  "Username": "John",
+  "Password": "John123",
+  "Email": "John@protonmail.com",
+  "Birth": "1980-06-14T23:00:00.000Z",
+  "City": "Singapore",
+  "FavouriteMovies": [
+      "61d6f8d92bac887d5627cd79"
+  ],
+  "__v": 0
+}
+          </code>
+        </pre></td>
       </tr>
       <tr>
         <td>Allow users to add a movie to their list of favourites </td>
         <td>/users/[username]/addfavourite/[movietitle]</td>
         <td>POST</td>
         <td>None</td>
-        <td>a text message indicating a movie has been added to favourites</td>
+        <td>a JSON object containing the new data replacing the user's old data
+          <pre>
+          <code>
+{
+  "_id": "61e02381348f9fc4d965c767",
+  "Username": "John",
+  "Password": "John123",
+  "Email": "John@protonmail.com",
+  "Birth": "1980-06-14T23:00:00.000Z",
+  "City": "Sydney",
+  "FavouriteMovies": [
+      "61d6f8d92bac887d5627cd79"
+  ],
+  "__v": 0
+}
+          </code>
+        </pre></td>
       </tr>
       <tr>
         <td>Allow users to remove a movie from their list of favourites</td>
         <td>/users/[username]/removefavourite/[movietitle]</td>
         <td>DELETE</td>
         <td>None</td>
-        <td>a text message indicating a movie has been removed from favourites</td>
+        <td>a JSON object containing the new data replacing the user's old data
+          <pre>
+          <code>
+{
+  "_id": "61e02381348f9fc4d965c767",
+  "Username": "John",
+  "Password": "John123",
+  "Email": "John@protonmail.com",
+  "Birth": "1980-06-14T23:00:00.000Z",
+  "City": "Sydney",
+  "FavouriteMovies": [
+      "61d6f8d92bac887d5627cd79"
+  ],
+  "__v": 0
+}
+          </code>
+        </pre></td>
       </tr>
       <tr>
         <td>Allow exiting users to deregister </td>
