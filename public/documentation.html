@@ -27,7 +27,7 @@
     <tbody>
       <tr>
         <td> Return a list of all movies to the user</td>
-        <td>/movies</td>
+        <td>/movies/</td>
         <td>GET</td>
         <td>None</td>
         <td>an array of JSON objects, each represents a movie
@@ -95,7 +95,7 @@
       </tr>
       <tr>
         <td>Return data about a genre (description) by name / title e.g., "Thriller"</td>
-        <td>/genres/[GenreName]</td>
+        <td>/genres/[genrename]</td>
         <td>GET</td>
         <td>None</td>
         <td>returns a genre description as text
@@ -197,7 +197,7 @@
       </tr>
       <tr>
         <td>Allow users to add a movie to their list of favourites </td>
-        <td>/users/[username]/addfavourite/[movietitle]</td>
+        <td>/users/[username]/addfavourite/[movieID]</td>
         <td>POST</td>
         <td>None</td>
         <td>a JSON object containing the new data replacing the user's old data
@@ -220,7 +220,7 @@
       </tr>
       <tr>
         <td>Allow users to remove a movie from their list of favourites</td>
-        <td>/users/[username]/removefavourite/[movietitle]</td>
+        <td>/users/[username]/removefavourite/[movieID]</td>
         <td>DELETE</td>
         <td>None</td>
         <td>a JSON object containing the new data replacing the user's old data
@@ -243,7 +243,7 @@
       </tr>
       <tr>
         <td>Allow exiting users to deregister </td>
-        <td>/users/:username</td>
+        <td>/users/[username]</td>
         <td>DELETE</td>
         <td>None</td>
         <td>a text message showing a user has deregistered</td>

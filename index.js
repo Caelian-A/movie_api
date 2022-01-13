@@ -121,9 +121,9 @@ app.put('/users/:username', (req, res) => {
 });
 
 // POST request for adding a movies to favourites (CHECKED w/ POSTMAN)
-app.post('/users/:username/addfavourite/:MovieID', (req, res) => {
+app.post('/users/:username/addfavourite/:movieID', (req, res) => {
     users.findOneAndUpdate({Username: req.params.username}, {
-        $push: {FavouriteMovies: req.params.MovieID}
+        $push: {FavouriteMovies: req.params.movieID}
     },
     {new: true},
 (err, updatedUser) => {
@@ -137,9 +137,9 @@ app.post('/users/:username/addfavourite/:MovieID', (req, res) => {
 });
 
 // DELETE request for removing a movies from favourites (CHECKED w/ POSTMAN)
-app.delete('/users/:username/removefavourite/:MovieID', (req, res) => {
+app.delete('/users/:username/removefavourite/:movieID', (req, res) => {
     users.findOneAndUpdate({Username: req.params.username}, {
-        $pull: {FavouriteMovies: req.params.MovieID}
+        $pull: {FavouriteMovies: req.params.movieID}
     },
     {new: true},
 (err, updatedUser) => {
