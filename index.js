@@ -45,9 +45,9 @@ mongoose.connect('mongodb://localhost:27017/MoviesDB', { useNewUrlParser: true, 
       });
   });
 
-  //GET Request for /genres/[genrename]
+  //GET Request for /genres/[genrename] (CHECKED w/ POSTMAN)
   app.get('/genres/:genrename', (req, res) => {
-      MoviesDB.find({'Genre.Name': req.params.genre})
+      MoviesDB.findOne({'Genre.Name': req.params.genrename})
       .then((movies) => {
           res.status(201).json(movies.Genre);
       })
@@ -57,11 +57,11 @@ mongoose.connect('mongodb://localhost:27017/MoviesDB', { useNewUrlParser: true, 
     });
   })
 
-// GET Request for /directors/[name]
+// GET Request for /directors/[name]  (CHECKED w/ POSTMAN)
 app.get('/directors/:name', (req, res) => {
     MoviesDB.findOne({'Directors.Name': req.params.name})
     .then((movie) => {
-        res.status(201).json(movie.director);
+        res.status(201).json(movie.Directors.find(director => director.Name === req.params.name)); 
     })
     .catch((err) => {
         console.error(err);
@@ -69,9 +69,9 @@ app.get('/directors/:name', (req, res) => {
     });
 })
 
-// POST request for user registration
-app.post('/users/', (req, res) => {
-    Users.findOne({ Username: req.body.Username })
+// POST request for user registration (CHECKED w/ POSTMAN)
+app.post('/users', (req, res) => {
+    Users.findOne({ Username: req.body.users })
         .then((user) => {
             if (user) {
                 return res.status(400).send(req.body.Username + 'is already taken!');
@@ -80,7 +80,7 @@ app.post('/users/', (req, res) => {
                     Username: req.body.Username,
                     Password: req.body.Password,
                     email: req.body.Email,
-                    birthday: req.body.Birthday, 
+                    birth: req.body.Birthday,
                     City: req.body.City
                     })
                     .then((user) =>{
@@ -98,14 +98,14 @@ app.post('/users/', (req, res) => {
         });
 });
 
-// PUT request for updating user details
-app.put('/users/:Username', (req, res) => {
-    Users.findOneAndUpdate({Username: req.params.Username}, { $set:
+// PUT request for updating user details (CHECKED w/ POSTMAN)
+app.put('/users/:username', (req, res) => {
+    Users.findOneAndUpdate({Username: req.params.username}, { $set:
     {
         Username: req.body.Username,
         Password: req.body.Password,
-        email: req.body.email,
-        birthday: req.body.Birthday, 
+        email: req.body.Email,
+        birth: req.body.Birthday, 
         City: req.body.City
     }
 },
@@ -120,9 +120,9 @@ app.put('/users/:Username', (req, res) => {
 });
 });
 
-// POST request for adding a movies to favourites
-app.post('/users/:username/addfavourite/:movietitle', (req, res) => {
-    Users.findOneAndUpdate({Username: req.params.Username}, {
+// POST request for adding a movies to favourites (CHECKED w/ POSTMAN)
+app.post('/users/:username/addfavourite/:MovieID', (req, res) => {
+    Users.findOneAndUpdate({Username: req.params.username}, {
         $push: {FavouriteMovies: req.params.MovieID}
     },
     {new: true},
@@ -136,9 +136,9 @@ app.post('/users/:username/addfavourite/:movietitle', (req, res) => {
 });
 });
 
-// DELETE request for removing a movies from favourites
-app.delete('/users/:username/removefavourite/:movietitle', (req, res) => {
-    Users.findOneAndUpdate({Username: req.params.Username}, {
+// DELETE request for removing a movies from favourites (CHECKED w/ POSTMAN)
+app.delete('/users/:username/removefavourite/:MovieID', (req, res) => {
+    Users.findOneAndUpdate({Username: req.params.username}, {
         $pull: {FavouriteMovies: req.params.MovieID}
     },
     {new: true},
@@ -152,7 +152,7 @@ app.delete('/users/:username/removefavourite/:movietitle', (req, res) => {
 });
 });
 
-// DELETE request removing a user
+// DELETE request removing a user (CHECKED w/ POSTMAN)
 app.delete('/users/:username', (req, res) => {
     Users.findOneAndRemove({ Username: req.params.username })
     .then((user) => {
