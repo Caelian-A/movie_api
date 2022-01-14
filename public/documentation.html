@@ -22,6 +22,7 @@
         <th>HTTP<br>METHOD</th>
         <th>REQUEST BODY DATA FORMAT</th>
         <th>RESPONSE BODY DATA FORMAT</th>
+        <th>AUTHENTICATION</th>
       </tr>
     </thead>
     <tbody>
@@ -59,6 +60,7 @@
             </code>
           </pre>
         </td>
+        <td>JWT Authentication</td>
       </tr>
       <tr>
         <td>Return Data&nbsp;&nbsp;about a single movie by title to the user</td>
@@ -92,6 +94,7 @@
             </code>
           </pre>
         </td>
+        <td>JWT Authentication</td>
       </tr>
       <tr>
         <td>Return data about a genre (description) by name / title e.g., "Thriller"</td>
@@ -108,6 +111,7 @@
             </code>
           </pre>
         </td>
+        <td>JWT Authentication</td>
       </tr>
       <tr>
         <td>Return data about a director (bio, birth year, death year) by name</td>
@@ -126,6 +130,7 @@
             </code>
           </pre>
         </td>
+        <td>JWT Authentication</td>
       </tr>
       <tr>
         <td>Allow new users to register</td>
@@ -160,6 +165,7 @@
             </code>
           </pre>
         </td>
+        <td>None</td>
       </tr>
       <tr>
         <td>Allow users to update their user info (username)</td>
@@ -193,7 +199,9 @@
   "__v": 0
 }
           </code>
-        </pre></td>
+        </pre>
+      </td>
+      <td>JWT Authentication</td>
       </tr>
       <tr>
         <td>Allow users to add a movie to their list of favourites </td>
@@ -216,7 +224,9 @@
   "__v": 0
 }
           </code>
-        </pre></td>
+        </pre>
+      </td>
+      <td>JWT Authentication</td>
       </tr>
       <tr>
         <td>Allow users to remove a movie from their list of favourites</td>
@@ -239,7 +249,9 @@
   "__v": 0
 }
           </code>
-        </pre></td>
+        </pre>
+      </td>
+      <td>JWT Authentication</td>
       </tr>
       <tr>
         <td>Allow exiting users to deregister </td>
@@ -247,6 +259,42 @@
         <td>DELETE</td>
         <td>None</td>
         <td>a text message showing a user has deregistered</td>
+        <td>JWT Authentication</td>
+      </tr>
+      <tr>
+        <td>Allow users to login. Credentials are sent either via the parameters or the request body.</td>
+        <td>/users/login or /users/login?Username=XXXX&Password=XXXX</td>
+        <td>POST</td>
+        <td>an optional JSON object holding the username and password
+          <pre>
+          <code>
+{
+  "Username" : "John",
+  "Password" : "John123",
+}
+          </code>
+        </pre>
+      </td>
+        <td>a JSON object containing the new data replacing the user's old data
+          <pre>
+          <code>
+{
+  "user": {
+      "_id": "61e16924af5fda29a7dfda8b",
+      "Username": "XXXX",
+      "Password": "XXXXXX",
+      "Email": "XXXX@XXXX.com",
+      "Birth": "1985-05-05T00:00:00.000Z",
+      "City": "XXXXXX",
+      "FavouriteMovies": [],
+      "__v": 0
+  },
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+}
+          </code>
+        </pre>
+      </td>
+      <td>Basic Authentication (Username, Password)</td>
       </tr>
     </tbody>
   </table>
