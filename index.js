@@ -15,6 +15,11 @@ mongoose.connect('mongodb://localhost:27017/MoviesDB', { useNewUrlParser: true, 
   // Middleware
   app.use(morgan('common'));
   app.use(express.static('public'));
+  
+  //Authentication
+let auth = require('./auth')(app);
+const passport = require('passport');
+require('./passport');
 
   // GET request for '/' returns welcome text
   app.get ('/', (req, res) => {
@@ -22,7 +27,7 @@ mongoose.connect('mongodb://localhost:27017/MoviesDB', { useNewUrlParser: true, 
   });  
 
   //GET request for /movies returns list of movies(CHECKED w/ POSTMAN)
-  app.get('/movies/', (req, res) => {
+  app.get('/movies/', passport.authenticate('jwt', {session: false}), (req, res) => {
     moviesDB.find()
       .then((movies) => {
           res.status(201).json(movies);
@@ -71,10 +76,10 @@ app.get('/directors/:name', (req, res) => {
 
 // POST request for user registration (CHECKED w/ POSTMAN)
 app.post('/users', (req, res) => {
-    users.findOne({ Username: req.body.users })
+    users.findOne({ Username: req.body.Username })
         .then((user) => {
             if (user) {
-                return res.status(400).send(req.body.Username + 'is already taken!');
+                return res.status(400).send(req.body.Username + ' is already taken!');
             } else {
                 users.create({
                     Username: req.body.Username,
@@ -93,7 +98,7 @@ app.post('/users', (req, res) => {
             }
         })
         .catch((error) => {
-            console.errir(error);
+            console.error(error);
             res.status(500).send('Error: ' + error);
         });
 });
