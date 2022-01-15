@@ -2,6 +2,7 @@
 // Require modules for use in app
 const bodyParser = require('body-parser');
 const express = require('express');
+const { check, validationResult } = require('express-validator');
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extend:true}));
@@ -10,6 +11,8 @@ const mongoose = require('mongoose');
 const models = require('./models.js');
 const moviesDB = models.movie;
 const users = models.user;
+const cors = require('cors');
+app.use(cors());
 mongoose.connect('mongodb://localhost:27017/MoviesDB', { useNewUrlParser: true, useUnifiedTopology: true});
 
   // Middleware
@@ -75,7 +78,20 @@ app.get('/directors/:name', passport.authenticate('jwt', {session: false}), (req
 })
 
 // POST request for user registration (CHECKED w/ POSTMAN)
-app.post('/users', (req, res) => {
+app.post('/users', [
+    check('Username', 'Username must be at least 5 characters long').isLength({min: 4}),
+    check('Username', 'Username must contain only alphanumeric characters').isAlphanumeric(),
+    check('Password', 'Password must be at least 8 charactes long, contain at least 1 Uppercase and 1 lowercase character. Password must also contain at least 1 number and 1 symbol.').isStrongPassword(),
+    check('Email', 'Email is not valid').isEmail(),
+    check('Birthday', 'Birthday is invalid, please input your birthday as YYYY-MM-DD').isDate(),
+    check('City', 'City can contain only letters').isAlpha()
+    ], (req, res) => {
+        //Check for Validation errors
+        let errors = validationResult(req);
+        if (!errors.isEmpty()){
+            return res.status(422).json({errors: errors.array() });
+        } 
+    let hashedPassword = users.hashPassword(req.body.Password)
     users.findOne({ Username: req.body.Username })
         .then((user) => {
             if (user) {
@@ -83,13 +99,13 @@ app.post('/users', (req, res) => {
             } else {
                 users.create({
                     Username: req.body.Username,
-                    Password: req.body.Password,
+                    Password: hashedPassword,
                     Email: req.body.Email,
                     Birth: req.body.Birthday,
                     City: req.body.City
                     })
                     .then((user) =>{
-                        res.status(201).json(user);
+                        res.status(201).json(user)
                     })
                 .catch((error) => {
                     console.error(error);
@@ -104,11 +120,24 @@ app.post('/users', (req, res) => {
 });
 
 // PUT request for updating user details (CHECKED w/ POSTMAN)
-app.put('/users/:username', passport.authenticate('jwt', {session: false}), (req, res) => {
+app.put('/users/:username', [
+    check('Username', 'Username must be at least 5 characters long').isLength({min: 4}),
+    check('Username', 'Username must contain only alphanumeric characters').isAlphanumeric(),
+    check('Password', 'Password must be at least 8 charactes long, contain at least 1 Uppercase and 1 lowercase character. Password must also contain at least 1 number and 1 symbol.').isStrongPassword(),
+    check('Email', 'Email is not valid').isEmail(),
+    check('Birthday', 'Birthday is invalid, please input your birthday as YYYY-MM-DD').isDate(),
+    check('City', 'City can contain only letters').isAlpha()
+    ], passport.authenticate('jwt', {session: false}), (req, res) => {
+        //Check for Validation errors
+        let errors = validationResult(req);
+        if (!errors.isEmpty()){
+            return res.status(422).json({errors: errors.array() });
+        } 
+    let hashedPassword = users.hashPassword(req.body.Password)
     users.findOneAndUpdate({Username: req.params.username}, { $set:
     {
         Username: req.body.Username,
-        Password: req.body.Password,
+        Password: hashedPassword,
         Email: req.body.Email,
         Birth: req.body.Birthday, 
         City: req.body.City
